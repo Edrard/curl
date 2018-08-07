@@ -3,8 +3,7 @@
 namespace edrard\Curl;
 
 /**
-* curlopt_followlocation cannot be activated when an open_basedir is set 
-* This is alternative function to keep go on redirects.
+* Browser Agents
 */
 
 

@@ -3,7 +3,7 @@
 namespace edrard\Curl;
 
 /**
-* Get Url with retry and pauses;
+* Get Url using based PHP functions with retry and pauses;
 */
 
 class GetUrl

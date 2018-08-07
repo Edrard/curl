@@ -1,6 +1,11 @@
 <?php
 namespace edrard\Curl;
 
+/**
+* Simple MultiCurl library with single URL retry
+*/
+
+
 class Curl
 {
     protected $sessions                 =    array();
