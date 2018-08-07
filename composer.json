@@ -14,10 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "edrard\\Curl\\": "src/Curl",
-            "edrard\\GetUrl\\": "src/GetUrl",
-            "edrard\\Agents\\": "src/Agents",
-            "edrard\\CurlNoFollow\\": "src/CurlNoFollow"
+            "edrard\\Curl\\": "src/Curl"
         }
     }
 }

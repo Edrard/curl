@@ -10,7 +10,7 @@ class GetUrl
 {
     public static function getSingle($url, $retry, Callable $function = NULL){
         $res = FALSE;
-        while( $retry >= 0 && $res == FALSE) 
+        while( $retry >= 0 && $res === FALSE) 
         {
             $sleep = $function !== NULL ? $function($retry) : 1;
             sleep($sleep);
@@ -19,11 +19,11 @@ class GetUrl
                     'timeout' => 15, // 1 200 Seconds = 20 Minutes
                 )
             ));
-            if($url){
+            if(!$url){
                 $res = '';
                 break;
             }   
-            $res = file_get_contents($url, false, $ctx);   
+            $res = file_get_contents($url, false, $ctx);  
             $retry--;
         }
         return $res;

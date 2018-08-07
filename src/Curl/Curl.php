@@ -3,7 +3,6 @@ namespace edrard\Curl;
 
 class Curl
 {
-
     protected $sessions                 =    array();
     protected $retry                    =    100; 
     protected $timeout                  =    60;
@@ -40,25 +39,27 @@ class Curl
     * @param $url string, session's URL
     * @param $opts array, optional array of Curl options and values
     */
-    public function addSession( $url, $name, $opts = array() )
+    public function addSession( $url, $name, $opts = array(), $base_opts = TRUE )
     {
         $this->sessions[$name] = curl_init( $url );
 
-        if(!isset($opts['19913'])){
-            $opts['19913'] = 1;
+        if($base_opts !== FALSE){
+            if(!isset($opts['19913'])){
+                $opts['19913'] = 1;
+            }
+            if(!isset($opts['52'])){
+                $opts['52'] = 1;
+            }
+            if(!isset($opts['13'])){
+                $opts['13'] = $this->timeout;
+            } 
+            if(!isset($opts['78'])){
+                $opts['78'] = $this->conn_timeout;
+            } 
         }
-        if(!isset($opts['52'])){
-            $opts['52'] = 1;
-        }
-        if(!isset($opts['13'])){
-            $opts['13'] = $this->timeout;
-        } 
-        if(!isset($opts['78'])){
-            $opts['78'] = $this->conn_timeout;
-        } 
         if($this->user_agent !== FALSE && !isset($opts['10018'])){
             $opts['10018'] = Agents::get();
-        }
+        }  
         $this->setOpts( $opts, $name );
     }
 
@@ -98,8 +99,8 @@ class Curl
             $code[0] = 0;
             while( $retry >= 0 && ($code[0] >= 400 || $code[0] == 0) ) 
             {
-                $sleep = $this->sleep($retry);
-                sleep($sleep);
+                $sleep = $this->sleep;
+                sleep($sleep($this->retry));
                 $res = curl_exec( $this->sessions[$id] );
                 $code = $this->info( $id, CURLINFO_HTTP_CODE );          
                 $retry--;
