@@ -1,5 +1,5 @@
 {
-    "name": "edrard/function",
+    "name": "edrard/Curl",
     "description": "Small Curl library with Multicurl and Retrying",
     "type": "library",
     "homepage": "https://github.com/Edrard/Curl",
