@@ -105,7 +105,7 @@ class Curl
             while( $retry >= 0 && ($code[0] >= 400 || $code[0] == 0) ) 
             {
                 $sleep = $this->sleep;
-                sleep($sleep($this->retry));
+                sleep($sleep($retry));
                 $res = curl_exec( $this->sessions[$id] );
                 $code = $this->info( $id, CURLINFO_HTTP_CODE );          
                 $retry--;
