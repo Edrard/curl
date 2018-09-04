@@ -16,7 +16,7 @@ class GetUrl
                 $res = '';
                 break;
             } 
-            $sleep = $function !== NULL ? $function($retry) : 1;
+            $sleep = $function !== NULL ? $function($retry,$url) : 1;
             sleep($sleep);
             $ctx = stream_context_create(array('http'=>
                 array(
