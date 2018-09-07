@@ -9,7 +9,7 @@ namespace edrard\Curl;
 
 Class Agents
 {   
-    protected $all_useragents = array(  
+    protected static $all_useragents = array(  
         "Opera/9.23 (Windows NT 5.1; U; ru)",  
         "Mozilla/5.0 (Windows; U; Windows NT 5.1; ru; rv:1.8.1.8) Gecko/20071008 Firefox/2.0.0.4;MEGAUPLOAD 1.0",  
         "Mozilla/5.0 (Windows; U; Windows NT 5.1; Alexa Toolbar; MEGAUPLOAD 2.0; rv:1.8.1.7) Gecko/20070914 Firefox/2.0.0.7;MEGAUPLOAD 1.0",  
@@ -33,6 +33,6 @@ Class Agents
     );
     public static function get($i = FALSE){
         
-        return $i === FALSE ? $this->all_useragents[array_rand($this->all_useragents)] : $this->all_useragents[$i];
+        return $i === FALSE ? static::$all_useragents[array_rand(static::$all_useragents)] : static::$all_useragents[$i];
     } 
 }
