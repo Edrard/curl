@@ -162,20 +162,29 @@ class Curl
         curl_multi_close( $mh );
         return $res;
     }
-
+    public function getSessions($key = FALSE){
+        if( $key === FALSE ){
+            return $this->sessions;
+        }   
+        return isset($this->sessions[$key]) ? $this->sessions[$key] : FALSE;
+    }
     /**
     * Closes Curl sessions
     * @param $key int, optional session to close
     */
-    public function close( $key = false )
+    public function close( $key = FALSE )
     {
-        if( $key === false )
+        if( $key === FALSE )
         {
-            foreach( $this->sessions as $session )
+            foreach( $this->sessions as $session ){
                 curl_close( $session );
-        }
-        else
+            }
+            unset( $this->sessions );
+            $this->sessions = array();
+        }else{
             curl_close( $this->sessions[$key] );
+            unset( $this->sessions[$key] );
+        }
     }
 
     /**
@@ -183,9 +192,11 @@ class Curl
     */
     public function clear()
     {
-        foreach( $this->sessions as $session )
+        foreach( $this->sessions as $session ){
             curl_close( $session );
+        }
         unset( $this->sessions );
+        $this->sessions = array();
     }
 
     /**
