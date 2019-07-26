@@ -1,8 +1,8 @@
 {
-    "name": "edrard/Curl",
+    "name": "edrard/curl",
     "description": "Small Curl library with Multicurl and Retrying",
     "type": "library",
-    "homepage": "https://github.com/Edrard/Curl",
+    "homepage": "https://github.com/Edrard/curl",
     "license": "MIT",
     "authors": [{
         "name": "Edrard",
