@@ -3,19 +3,20 @@
 namespace edrard\Curl;
 
 /**
-* curlopt_followlocation cannot be activated when an open_basedir is set 
+* curlopt_followlocation cannot be activated when an open_basedir is set
 * This is alternative function to keep go on redirects.
 */
 
-
-Class CurlNoFollow
-{  
-    public static function exec($url){
+class CurlNoFollow
+{
+    public static function exec($url)
+    {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         return static::curlRedirectExec($ch);
     }
-    protected static function curlRedirectExec($ch, &$redirects = 0, $curlopt_header = false) {
+    protected static function curlRedirectExec($ch, &$redirects = 0, $curlopt_header = false)
+    {
         curl_setopt($ch, CURLOPT_HEADER, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -43,6 +44,6 @@ Class CurlNoFollow
             list(, $body) = explode("\r\n\r\n", $data, 2);
             return $body;
         }
-        return FALSE;
+        return false;
     }
 }
