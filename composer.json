@@ -16,6 +16,5 @@
         "psr-4": {
             "edrard\\Curl\\": "src/Curl"
         }
-    },
-    "minimum-stability": "dev"
+    }
 }
